@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Welcome, {{ request.session.users_name }}</h1>
+    <a href="/logout">Logout</a>
+
+    <h3>People you may want to poke</h3>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Alias</th>
+        <th>Email Address</t
+        <th>Poke History</th>
+        <th>Action</th>
+      </tr>
+    {% for user in other_users %}
+      <tr>
+        <td>{{ user.n_ame}}</td>
+        <td>{{ user.a_lias }}</td>
+        <td>{{ user.e_mail }}</td>
+        <td>{{ user.pokes }} Pokes</td>
+        <td><form action="/poking/{{ user.id }}" method="post">
+          {% csrf_token %}
+        <button>Poke</button>
+        </form></td>
+      </tr>
+    {% endfor %}
+    </table>
+  </body>
+</html>
